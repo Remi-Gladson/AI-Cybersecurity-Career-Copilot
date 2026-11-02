@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07111f">
+<title>CyberPath AI — Career Copilot</title>
+<style>
+:root{--bg:#07111f;--panel:#101e30;--panel2:#14263b;--line:#243b55;--text:#eaf2fb;--muted:#9db0c5;--cyan:#43d9d0;--blue:#648cff;--green:#62d69a;--amber:#ffca72;--red:#ff8585}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% -10%,#183b5b 0,transparent 35%),var(--bg);color:var(--text);font:15px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}.shell{max-width:1120px;margin:auto;padding:18px}
+header{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0 22px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}.logo{width:39px;height:39px;border-radius:12px;background:linear-gradient(135deg,var(--cyan),var(--blue));display:grid;place-items:center;color:#06121f;font-size:20px}
+.brand small{display:block;color:var(--muted);font-weight:500;font-size:11px;letter-spacing:1.5px}
+.status{font-size:12px;color:var(--green);border:1px solid #285c52;border-radius:30px;padding:6px 10px}
+.hero{padding:28px 0 20px}.eyebrow{color:var(--cyan);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+h1{font-size:clamp(29px,6vw,48px);line-height:1.08;letter-spacing:-1.5px;margin:10px 0}.hero p{max-width:680px;color:var(--muted);margin:10px 0 0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}.stat,.panel,.tile{background:linear-gradient(160deg,#14263a,#0e1b2b);border:1px solid var(--line);border-radius:16px}.stat{padding:13px}.stat b{font-size:21px;display:block}.stat span{color:var(--muted);font-size:12px}
+.layout{display:grid;grid-template-columns:220px 1fr;gap:16px;margin-top:18px}.sidebar{padding:10px;height:max-content;position:sticky;top:12px}.navbtn{width:100%;text-align:left;background:transparent;color:var(--muted);border:0;border-radius:10px;padding:12px;margin:2px 0}.navbtn.active,.navbtn:hover{background:#1a3550;color:var(--text)}.navbtn em{font-style:normal;margin-right:9px}
+main{min-width:0}.panel{padding:20px;margin-bottom:15px}.panel h2{margin:0 0 5px;font-size:21px}.sub{color:var(--muted);margin:0 0 18px;font-size:13px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{margin:0 0 13px}.field label{display:block;font-weight:650;font-size:13px;margin-bottom:6px}.field select,.field input{width:100%;padding:12px;background:#091727;border:1px solid var(--line);border-radius:10px;color:var(--text);outline:none}.field select:focus,.field input:focus{border-color:var(--cyan)}
+.primary{background:linear-gradient(100deg,var(--cyan),#7ea7ff);color:#061421;border:0;border-radius:10px;padding:12px 17px;font-weight:800}.secondary{background:#1b3047;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-weight:650}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:8px}
+.hidden{display:none!important}.result{border:1px solid #28665f;background:#102d31;border-radius:13px;padding:16px;margin-top:16px}.result h3{margin:0 0 5px;color:var(--cyan)}.tag{display:inline-block;border:1px solid var(--line);border-radius:30px;padding:4px 9px;color:#b9d2e9;font-size:11px;margin:3px 4px 3px 0}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.tile{padding:15px}.tile h3{font-size:16px;margin:0 0 5px}.tile p{font-size:13px;color:var(--muted);margin:0 0 10px}.tile strong{color:var(--cyan);font-size:12px}
+.progress{height:8px;background:#263a50;border-radius:20px;overflow:hidden;margin:9px 0}.progress span{height:100%;display:block;background:linear-gradient(90deg,var(--cyan),var(--blue));width:0}
+.step{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.step:last-child{border:0}.num{width:28px;height:28px;flex:none;border-radius:9px;background:#1b4050;color:var(--cyan);display:grid;place-items:center;font-weight:800}.step p{margin:2px 0 0;color:var(--muted);font-size:13px}
+.quizq{padding:13px 0;border-bottom:1px solid var(--line)}.quizq p{font-weight:700;margin:0 0 9px}.option{display:block;padding:8px 10px;border:1px solid var(--line);border-radius:9px;margin:6px 0;color:#c9d7e5;font-size:13px}.option input{margin-right:8px;accent-color:var(--cyan)}
+.note{font-size:12px;color:var(--muted);margin-top:14px}.toast{color:var(--green);font-size:13px;min-height:20px}
+footer{padding:22px 0;color:var(--muted);font-size:11px;text-align:center}
+@media(max-width:720px){.shell{padding:14px}.layout{grid-template-columns:1fr}.sidebar{position:static;display:flex;overflow:auto;gap:4px;padding:5px}.navbtn{white-space:nowrap;width:auto;padding:10px}.navbtn em{margin-right:5px}.grid2,.cards{grid-template-columns:1fr}.stats{gap:7px}.stat{padding:10px}.stat b{font-size:18px}.panel{padding:16px}.status{font-size:10px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header><div class="brand"><div class="logo">⌁</div><div>CYBERPATH AI<small>CAREER COPILOT</small></div></div><div class="status">● BASIC MODE · AI READY LATER</div></header>
+<section class="hero"><div class="eyebrow">Your cybersecurity journey starts here</div><h1>Build your path into<br><span style="color:var(--cyan)">cybersecurity.</span></h1><p>A beginner-friendly career companion. Discover roles that match your interests, identify skills to learn, follow a roadmap and practise interview questions.</p></section>
+<div class="stats"><div class="stat"><b>7</b><span>Career paths</span></div><div class="stat"><b>4 weeks</b><span>Starter roadmap</span></div><div class="stat"><b>5 questions</b><span>Interview practice</span></div></div>
+<div class="layout">
+<aside class="sidebar panel">
+<button class="navbtn active" data-page="assessment"><em>◎</em> Career assessment</button>
+<button class="navbtn" data-page="roadmap"><em>▤</em> Learning roadmap</button>
+<button class="navbtn" data-page="roles"><em>⌘</em> Explore careers</button>
+<button class="navbtn" data-page="certs"><em>✧</em> Certifications</button>
+<button class="navbtn" data-page="quiz"><em>✓</em> Interview practice</button>
+</aside>
+<main>
+<section id="assessment" class="page panel">
+<h2>Career assessment</h2><p class="sub">Answer these quick questions. Your result is a starter recommendation, not a formal aptitude test.</p>
+<div class="grid2">
+<div class="field"><label for="interest">What interests you most?</label><select id="interest"><option value="defense">Protecting systems and monitoring alerts</option><option value="offense">Finding weaknesses and ethical hacking</option><option value="cloud">Cloud and infrastructure security</option><option value="investigation">Investigating incidents and digital evidence</option><option value="engineering">Building secure systems and tools</option></select></div>
+<div class="field"><label for="level">Your current technical level</label><select id="level"><option value="beginner">Beginner</option><option value="some">I know basic programming / networking</option><option value="good">Comfortable with Linux, networks or coding</option></select></div>
+<div class="field"><label for="strength">Which activity sounds best?</label><select id="strength"><option value="analyze">Analysing logs and spotting unusual activity</option><option value="test">Testing websites and applications</option><option value="build">Configuring systems and automation</option><option value="research">Researching incidents and evidence</option></select></div>
+<div class="field"><label for="hours">Time you can study each week</label><select id="hours"><option value="3">1–3 hours</option><option value="6" selected>4–6 hours</option><option value="10">7–10 hours</option><option value="14">10+ hours</option></select></div>
+</div>
+<div class="actions"><button class="primary" id="recommend">Find my career match →</button><button class="secondary" id="reset">Reset</button></div>
+<div id="assessmentResult" class="result hidden" aria-live="polite"></div>
+<p class="note">Your answers and progress are stored only in this browser using local storage. No account is needed.</p>
+</section>
+<section id="roadmap" class="page panel hidden"><h2>Your starter learning roadmap</h2><p class="sub">A practical four-week foundation. Adjust the pace to your schedule.</p><div id="roadmapSteps"></div><div class="progress"><span id="roadProgress"></span></div><p class="sub" id="roadText">0 of 4 weeks completed</p><button class="secondary" id="clearRoad">Reset roadmap progress</button></section>
+<section id="roles" class="page panel hidden"><h2>Explore cybersecurity careers</h2><p class="sub">Learn what each role does and what to study first.</p><div class="cards" id="roleCards"></div></section>
+<section id="certs" class="page panel hidden"><h2>Certification guide</h2><p class="sub">Compare beginner-friendly learning and certification options. Check provider sites for current costs and exam requirements.</p><div class="cards" id="certCards"></div></section>
+<section id="quiz" class="page panel hidden"><h2>Interview practice</h2><p class="sub">Choose an answer for each question, then check your score and explanations.</p><div id="quizArea"></div><div class="actions"><button class="primary" id="gradeQuiz">Check my answers</button><button class="secondary" id="retryQuiz">Try again</button></div><div id="quizResult" class="result hidden" aria-live="polite"></div></section>
+</main>
+</div>
+<footer>CYBERPATH AI · Beginner project prototype · Basic recommendations are rule-based; AI API integration is not enabled.</footer>
+</div>
+<script>
+const roles=[
+{name:"SOC Analyst",type:"defense",desc:"Monitors security alerts, investigates suspicious activity and helps respond to incidents.",skills:["Networking basics","Linux and Windows logs","SIEM fundamentals"],start:"Learn networking, operating-system basics and log analysis."},
+{name:"Penetration Tester",type:"offense",desc:"Tests systems with permission to discover and report security weaknesses.",skills:["Networking","Linux","Web security","Scripting"],start:"Learn TCP/IP, Linux and web fundamentals before using safe practice labs."},
+{name:"Cloud Security Engineer",type:"cloud",desc:"Helps secure cloud accounts, services, identities and infrastructure.",skills:["Cloud fundamentals","Identity and access","Networking","Automation"],start:"Understand networking and one cloud platform's fundamentals."},
+{name:"Digital Forensics Analyst",type:"investigation",desc:"Collects and examines digital evidence to understand security incidents.",skills:["Operating systems","Evidence handling","File systems","Report writing"],start:"Study operating systems, file systems and evidence preservation."},
+{name:"Security Engineer",type:"engineering",desc:"Designs, builds and maintains technical controls that protect systems.",skills:["Linux","Networking","Scripting","Security controls"],start:"Build strong Linux, networking and scripting foundations."},
+{name:"Incident Responder",type:"defense",desc:"Coordinates investigation, containment and recovery after security incidents.",skills:["Log analysis","Incident handling","Networking","Communication"],start:"Learn common attack patterns, logs and incident response stages."},
+{name:"Application Security Analyst",type:"offense",desc:"Helps development teams find and fix software security issues.",skills:["Programming","HTTP","Web vulnerabilities","Secure coding"],start:"Learn HTML, JavaScript, HTTP and secure coding basics."}
+];
+const certifications=[
+["ISC2 Certified in Cybersecurity (CC)","Entry-level cybersecurity concepts. Check current free-training and exam offers with ISC2.","https://www.isc2.org/Certifications/CC"],
+["CompTIA Security+","Broad foundational security knowledge; generally better after networking basics.","https://www.comptia.org/certifications/security"],
+["Cisco CCST Cybersecurity","Entry-level security concepts and practical foundations.","https://www.cisco.com/site/us/en/learn/training-certifications/certifications/enterprise/ccst-cybersecurity/index.html"],
+["Google Cybersecurity Certificate","Structured beginner learning path covering security operations and tools.","https://grow.google/certificates/cybersecurity/"]
+];
+const questions=[
+{q:"What does the CIA triad stand for?",o:["Control, Internet, Access","Confidentiality, Integrity, Availability","Cybersecurity, Investigation, Authentication"],a:1,e:"The CIA triad is a core model for protecting information."},
+{q:"Which protocol is commonly used for secure website connections?",o:["HTTP","FTP","HTTPS"],a:2,e:"HTTPS uses TLS to protect data exchanged with a website."},
+{q:"What is phishing?",o:["A deceptive attempt to steal information","A method of compressing files","A type of firewall"],a:0,e:"Phishing uses misleading messages or sites to trick people into revealing information or taking unsafe actions."},
+{q:"What is the purpose of multi-factor authentication?",o:["Make passwords shorter","Require more than one proof of identity","Disable account logging"],a:1,e:"MFA adds another verification factor beyond a password."},
+{q:"What should you do before testing a website for vulnerabilities?",o:["Get explicit permission and define scope","Try random passwords","Disable its security controls"],a:0,e:"Security testing must be authorised and stay within an agreed scope."}
+];
+const roadmap=[
+["Week 1 · Computer and network basics","Understand IP addresses, DNS, HTTP/HTTPS, routers, ports and the client-server model.","Study networking fundamentals and draw a simple network diagram."],
+["Week 2 · Operating systems and Linux","Learn files, permissions, processes, users and basic terminal commands.","Practise commands such as pwd, ls, cd, cat and grep in your own safe environment."],
+["Week 3 · Security foundations","Study CIA triad, authentication, encryption, malware, phishing and access control.","Write short notes explaining each concept in your own words."],
+["Week 4 · Hands-on practice","Explore beginner labs, log reading and basic incident scenarios.","Use legal training platforms such as TryHackMe beginner paths or Cisco Skills for All."]
+];
+function save(key,val){localStorage.setItem("cyberpath_"+key,JSON.stringify(val))}
+function load(key,fallback){try{return JSON.parse(localStorage.getItem("cyberpath_"+key))??fallback}catch{return fallback}}
+document.querySelectorAll(".navbtn").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".navbtn").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));document.getElementById(b.dataset.page).classList.remove("hidden")}));
+function renderRoles(){document.getElementById("roleCards").innerHTML=roles.map(r=>`<article class="tile"><h3>${r.name}</h3><p>${r.desc}</p><strong>START WITH</strong><p>${r.start}</p><div>${r.skills.map(s=>`<span class="tag">${s}</span>`).join("")}</div></article>`).join("")}
+function renderCerts(){document.getElementById("certCards").innerHTML=certifications.map(c=>`<article class="tile"><h3>${c[0]}</h3><p>${c[1]}</p><a href="${c[2]}" target="_blank" rel="noopener" style="color:var(--cyan);font-size:13px">Official information ↗</a></article>`).join("")}
+function renderRoadmap(){let done=load("road",[]);document.getElementById("roadmapSteps").innerHTML=roadmap.map((s,i)=>`<div class="step"><input type="checkbox" aria-label="Complete ${s[0]}" data-week="${i}" ${done.includes(i)?"checked":""} style="accent-color:var(--cyan);margin-top:7px"><div><b>${s[0]}</b><p>${s[1]}</p><p><strong style="color:var(--cyan)">Task:</strong> ${s[2]}</p></div></div>`).join("");document.querySelectorAll("[data-week]").forEach(c=>c.addEventListener("change",()=>{let d=load("road",[]);d=c.checked?[...d,+c.dataset.week]:d.filter(x=>x!==+c.dataset.week);save("road",d);updateRoad()}));updateRoad()}
+function updateRoad(){let n=load("road",[]).length;document.getElementById("roadProgress").style.width=(n/4*100)+"%";document.getElementById("roadText").textContent=`${n} of 4 weeks completed`}
+function showCareer(){let interest=document.getElementById("interest").value,strength=document.getElementById("strength").value,level=document.getElementById("level").value;let map={defense:"SOC Analyst",offense:"Penetration Tester",cloud:"Cloud Security Engineer",investigation:"Digital Forensics Analyst",engineering:"Security Engineer"};let preferred=map[interest];if(strength==="analyze")preferred="SOC Analyst";if(strength==="test")preferred="Penetration Tester";if(strength==="research")preferred="Digital Forensics Analyst";let r=roles.find(x=>x.name===preferred);let result=document.getElementById("assessmentResult");result.classList.remove("hidden");result.innerHTML=`<h3>Your suggested starting role: ${r.name}</h3><p>${r.desc}</p><b>Skills to build</b><div>${r.skills.map(s=>`<span class="tag">${s}</span>`).join("")}</div><p><b>First step:</b> ${r.start}</p><p class="note">Based on your selected interests and activity preference. Your current level is ${level}. Explore other roles too; this result is guidance, not a hiring prediction.</p><button class="secondary" id="toRoad">Open my learning roadmap</button>`;save("career",preferred);document.getElementById("toRoad").onclick=()=>document.querySelector('[data-page="roadmap"]').click()}
+document.getElementById("recommend").onclick=showCareer;
+document.getElementById("reset").onclick=()=>{["interest","level","strength","hours"].forEach((id,i)=>document.getElementById(id).selectedIndex=0);document.getElementById("assessmentResult").classList.add("hidden")};
+document.getElementById("clearRoad").onclick=()=>{save("road",[]);renderRoadmap()};
+function renderQuiz(){document.getElementById("quizArea").innerHTML=questions.map((q,i)=>`<div class="quizq"><p>${i+1}. ${q.q}</p>${q.o.map((o,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}">${o}</label>`).join("")}</div>`).join("");document.getElementById("quizResult").classList.add("hidden")}
+document.getElementById("gradeQuiz").onclick=()=>{let score=0,details=questions.map((q,i)=>{let a=document.querySelector(`input[name="q${i}"]:checked`);if(a&&+a.value===q.a)score++;return `<p><b>${i+1}. ${a&&+a.value===q.a?"Correct":"Review"}:</b> ${q.e}</p>`}).join("");let box=document.getElementById("quizResult");box.classList.remove("hidden");box.innerHTML=`<h3>Your score: ${score}/${questions.length}</h3>${details}`;save("lastScore",score)};
+document.getElementById("retryQuiz").onclick=renderQuiz;
+renderRoles();renderCerts();renderRoadmap();renderQuiz();
+</script>
+</body>
+</html>
